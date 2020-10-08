@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+	<title>My Notes for html</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="C:\Users\AIDa_MAhmoud\Desktop\Udacity\Grandstander\static\Grandstander-ExtraBoldItalic.ttf">
+	<link href="https://fonts.googleapis.com/css2?family=Grandstander:ital,wght@0,200;1,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Monoton" />
+	<style>
+      	#box{
+  width: 50%;
+  height: 420px;
+  text-align: center;
+  font-size: 20px;
+  font-family: "Courier New", Courier, monospace;
+  margin-left: 25%;
+}
+td{width:15px;height: 15px;}
+h1 { font-family: "Lucida Console", Times, serif; 
+ font-size: 44px;
+  font-weight: 700; line-height: 26.4px; font-variant-position: center;}
+#inputHeight ,#inputWidth{
+	width: 60px;
+	height: 20px;
+	font-weight: bold;
+	font-size: 20px;
+	border-radius: 14px;
+}
+table{
+	margin-left: 35%;
+}
+label{
+	font-weight:bold;
+	 display: inline-block;
+}
+input[type=button]{
+	size: 100px;
+	font-weight: bold;
+	font-size: 16px;
+}
+    </style>
+</head>
+<body>
+
+<div id="box" >
+	<h1>Pixel Art Maker</h1>
+    <h2>Choose Grid Size</h2>
+    <form class="form-horizontal"id="sizePicker" >
+        <label class="contrl-label" for="inputHeight"> Grid Height:</label>
+        <input type="number" id="inputHeight" name="height" min="1" value="1"  class="control-group "> 
+        <label class="contrl-label" for="inputWidth"> Grid Width:</label>
+        <input type="number" id="inputWidth" name="width" min="1" value="1"  class="control-group ">
+        <input type="button" onclick="makeGrid(this.form)" value="submit">
+    </form>
+    <h2>Pick A Color</h2>
+    <input type="color" id="colorPicker">
+    <h2>Design Canvas</h2>
+    <table id="pixelCanvas"></table>
+</div>
+<div>
+	<img src="svg3.png" style="width: 400px;height: 400px;">
+</div>
+
+ <script type="text/javascript">
+
+ 	function makeGrid(n){
+ 		const N= n.inputHeight.value ,
+ 		M=n.inputWidth.value;
+	 	const t=document.getElementById('pixelCanvas');
+	 	t.style='border: 1px solid black;';
+	 	const color=document.getElementById('colorPicker');
+ 
+ 	for(var i =0 ;i<N ; i++){
+ 		const t2=document.createElement('tr');
+ 		for (var j = 0; j < M; j++) {
+ 			const t3=document.createElement('td'); 
+ 			t3.addEventListener('click',function(event){t3.style.backgroundColor=color.value;});
+ 			t.appendChild(t3);
+ 		}
+ 		t.appendChild(t2);
+ 	} 
+ 	}
+ </script>
+</body>
+</html>
